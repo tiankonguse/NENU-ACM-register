@@ -51,10 +51,14 @@ include_once('header.inc.php');
      <label class="control-label" for="grade">年级</label>
      <div class="controls">
         <select id="grade" name="grade">
+           <option value="2012">2013</option>
            <option value="2012">2012</option>
            <option value="2011">2011</option>
            <option value="2010">2010</option>
            <option value="2010">2009</option>
+           <option value="2010">2008</option>
+           <option value="2010">2007</option>
+           <option value="2010">2006</option>
         </select>
      </div>
   </div>
@@ -198,9 +202,5 @@ function passField($name,$displayName){
   </div>
 ";
 }
-
-
-
-
 
 include_once('end.php');
