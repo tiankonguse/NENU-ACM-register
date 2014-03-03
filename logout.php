@@ -1,12 +1,8 @@
 <?
 session_start();
-
-unset($_SESSION['username']);
-unset($_SESSION['admin']);
+unset($_SESSION['ACMContestRegistUsername']);
+unset($_SESSION['ACMContestRegistAdmin']);
 header('Location:.');
-
-
-
 ?>
 
 

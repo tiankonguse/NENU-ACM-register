@@ -1,5 +1,5 @@
 <?php
-$title = "东北师范大学 2013 年 ACM 校赛";
+$title = "东北师范大学 ".date("Y",time())." 年 ACM 校赛";
 include_once('header.inc.php');?>
       <form class="form-signin" action="login.php" method="post">
         <h2 class="form-signin-heading">登录</h2>
@@ -35,7 +35,3 @@ if(isset($_GET['message'])){
 } 
 
 include_once('footer.inc.php');
-
-
-
-

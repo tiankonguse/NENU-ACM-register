@@ -9,13 +9,15 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 	$username = mysql_real_escape_string($_POST['username']);
 	$password = sha1(SALT . $_POST['password']);
 #	echo $username . " " . $password;
-	if($username == 'admin' && $password == '6b68d828ae798e017084c23391ba2bd67b263578' ){
-		$_SESSION['admin'] = 'admin';
+	if($username == 'admin' && $password == 'c03a66df94792e0a66cdef167f4c9ccb294cb450' ){
+		$_SESSION['ACMContestRegistAdmin'] = 'admin';
+		$_SESSION['ACMContestRegistUsername'] = "";
 	}
 	$sql = "select * from contestant where username = '$username' and password = '$password'";
 	$result = mysql_query($sql ,$conn);
 	if(mysql_num_rows($result) > 0){
-		$_SESSION['username'] = $username;
+		$_SESSION['ACMContestRegistUsername'] = $username;
+		$_SESSION['ACMContestRegistAdmin'] = "";
 		$ret["code"] = 0;
 		$ret["message"] = "";
 	}

@@ -1,10 +1,10 @@
 <?php
-$username = trim($_SEESION['username']);
+$username = trim($_SEESION['ACMContestRegistUsername']);
 if($username == ""){
 	header('Location:.');
 	return;
 }
-$title = "东北师范大学 2013 年 ACM 校赛注册";
+$title = "东北师范大学 ".date("Y",time())." 年 ACM 校赛注册";
 include_once('init.php');
 include_once('header.inc.php');
 

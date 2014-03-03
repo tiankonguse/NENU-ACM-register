@@ -5,7 +5,7 @@ $ret = array(
 	"code" => 1,
 	"message" => 'admin login first.'
 );
-if($_SESSION['admin']=='admin'){
+if($_SESSION['ACMContestRegistAdmin']=='admin'){
 	$id = intval($_POST['id']);
 	$status = intval($_POST['status']);
 	$sql = "UPDATE contestant SET status = $status WHERE id = $id";

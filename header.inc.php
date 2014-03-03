@@ -1,4 +1,5 @@
-<?php ?><!DOCTYPE html>
+<?php ?>
+<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
 <meta charset="utf-8">
@@ -15,8 +16,8 @@
 <![endif]-->
 </head>
 <body>
-<div id="wrap">
-<div class="container">
-	<div class="page-header">
-		<h1><?php echo $title; ?></h1>
-	</div>
+	<div id="wrap">
+		<div class="container">
+			<div class="page-header">
+				<h1><?php echo $title; ?></h1>
+			</div>

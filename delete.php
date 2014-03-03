@@ -5,7 +5,7 @@ $ret = array(
 	"code" => 1,
 	"message" => 'admin login first.'
 );
-if($_SESSION['admin']=='admin'){
+if($_SESSION['ACMContestRegistAdmin']=='admin'){
 	$id = intval($_POST['id']);
 	$sql = "DELETE FROM contestant WHERE id = $id";
 	mysql_query($sql);
