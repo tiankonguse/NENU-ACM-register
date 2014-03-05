@@ -82,7 +82,7 @@ function register() {
 		// alter oneself information
 		$result = mysql_query ( "SELECT status FROM contestant WHERE username = '$username'" );
 		$row = mysql_fetch_assoc ( $result );
-		if ($row ['status'] == 2) {
+		if ($row ['status'] >= 2) {
 			if ($_POST ['password'] != "") {
 				$sql .= "UPDATE contestant SET password = '$password' WHERE username = '$username'";
 				mysql_query ( $sql );

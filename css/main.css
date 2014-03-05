@@ -2,6 +2,10 @@ html,body {
 	height: 100%;
 }
 
+input,select,textarea {
+	outline: none !important;
+}
+
 #wrap {
 	min-height: 100%;
 	height: auto !important;
@@ -54,6 +58,36 @@ html,body {
 	height: auto;
 	margin-bottom: 15px;
 	padding: 7px 9px;
+}
+
+
+.center-box {
+	max-width: 300px;
+	padding: 19px 29px 29px;
+	margin: 60px auto;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.center-box .center-box-heading,.center-box .checkbox {
+	margin-bottom: 10px;
+}
+
+.center-box input[type="text"],.center-box input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
+.center-box .btn-full {
+	width: 260px;
 }
 
 .container .credit {

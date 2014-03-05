@@ -46,8 +46,9 @@ function showMessage(message,cb){
 		<p class="muted credit">
 			&copy;2013 ~
 			<script>document.write(new Date().getFullYear());</script>
-			<a href="http://acm.nenu.edu.cn">NENU ACM</a>. Writtern by <a href="http://winguse.com">Winguse</a>
-			and <a href="http://tiankonguse.com">Tiankong</a>.
+			<a href="http://acm.nenu.edu.cn">NENU ACM</a>. Writtern by <a
+				href="http://winguse.com">Winguse</a> and <a
+				href="http://tiankonguse.com">Tiankong</a>.
 		</p>
 	</div>
 </div>

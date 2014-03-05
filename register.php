@@ -1,7 +1,11 @@
 <?php
 session_start ();
 $username = $_SESSION ['ACMContestRegistUsername'];
-$title = "东北师范大学 " . date ( "Y", time () ) . " 年 ACM 校赛注册";
+if ($username == "") {
+	$title = "东北师范大学 " . date ( "Y", time () ) . " 年ACM/ICPC程序设计竞赛 - 注册";
+} else {
+	$title = "东北师范大学 " . date ( "Y", time () ) . " 年ACM/ICPC程序设计竞赛 - 信息修改";
+}
 include_once ('init.php');
 include_once ('header.inc.php');
 
@@ -51,14 +55,10 @@ include_once ('header.inc.php');
 		<label class="control-label" for="grade">年级</label>
 		<div class="controls">
 			<select id="grade" name="grade">
-				<option value="2012">2013</option>
 				<option value="2012">2012</option>
 				<option value="2011">2011</option>
 				<option value="2010">2010</option>
-				<option value="2010">2009</option>
-				<option value="2010">2008</option>
-				<option value="2010">2007</option>
-				<option value="2010">2006</option>
+				<option value="2009">2009</option>
 			</select>
 		</div>
 	</div>
@@ -85,7 +85,6 @@ include_once ('header.inc.php');
 	</div>
 
 	<div class="control-group form-actions">
-		<!-- 		<a href="." class="btn">返回</a> -->
 		<input type="submit" id="submit" name="submit" class="btn btn-primary"
 			value="注册">
 	</div>
@@ -95,28 +94,33 @@ include_once ('header.inc.php');
 if(username != ""){
 	loadUserInfo();
 	$("#submit")[0].value="修改";
-	$("#submit").after(" <a href='logout.php' class='btn'>退出登录</a>");
-}else{
-	$("#submit").after(" <a href='./' class='btn'>返回</a>");
 }
+$("#submit").after(" <a href='./' class='btn'>返回</a>");
+
+$("#major").attr("placeholder","输入部分专业名，根据提示选");
 
 function loadUserInfo(){
 	$("#username").attr("disabled","disabled");
 	$.get(
 		"profile_data.php",{},function(d){
 			if(d.code==0){
+				var feedback = d.data.feedback || "";
 				$(".alert").remove();
 				if(d.data.status == 0){
 					$("form").before("<div class='alert alert-info'><i class='icon icon-info-sign icon-white'></i> 您的信息已经提交，请等待审核，在此期间，您可以修改您的信息。</div>");
 				}else if(d.data.status == 1){
-					$("form").before("<div class='alert alert-error'><i class='icon icon-exclamation-sign icon-white'></i> 您提交的信息已经审核，但是未能通过，请修改成真实有效的信息，如有疑问，请联系我们。</div>");
+					$("form").before("<div class='alert alert-error'><i class='icon icon-exclamation-sign icon-white'></i> 您提交的信息已经审核，但是未能通过：<br><b>"+feedback+"</b><br>请修改成真实有效的信息，如有疑问，请联系我们。</div>");
 				}else if(d.data.status == 2){
 					$("form").before("<div class='alert alert-success'><i class='icon icon-ok-circle icon-white'></i> 您的信息已经通过审核，现在您不能修改你的信息，如果需要，请联系我们。</div>");
+				}else if(d.data.status == 3){
+					$("form").before("<div class='alert alert-success'><i class='icon icon-ok-circle icon-white'></i> 您已经晋级最终比赛，现在您不能修改你的信息，如果需要，请联系我们。</div>");
 				}
+				$("#password").attr("placeholder","新密码，不修改，请留空。");
+				$("label[for='password']").text("新密码，留空不改");
 				for(var k in d.data){
 					if($("#"+k).length == 0) continue;
 					$("#"+k)[0].value=d.data[k];
-					if(d.data.status == 2) $("#"+k)[0].disabled='disabled';
+					if(d.data.status >= 2) $("#"+k)[0].disabled='disabled';
 				}
 			}
 		},"json"
@@ -178,9 +182,7 @@ $(function(){$("#major").typeahead({source:majorList});});
 
 <?php
 include_once ('footer.inc.php');
-
 function selectField($name, $displayName, $arr) {
-// empty
 }
 function textField($name, $displayName) {
 	echo "
