@@ -17,10 +17,10 @@ $timestamp = time () * 1000;
 <div class="center-box">
 	<h2 class="center-box-heading"><?php echo $nickname; ?><small>，欢迎您！</small>
 	</h2>
-	<p>
-		<a class="btn btn-full btn-large btn-success" href="#"
-			id="login_contest">登陆比赛</a>
-	</p>
+<!-- 	<p> -->
+<!-- 		<a class="btn btn-full btn-large btn-success" href="#" -->
+<!-- 			id="login_contest">登陆比赛</a> -->
+<!-- 	</p> -->
 	<p>
 		<a class="btn btn-full btn-large btn-primary" href="register.php">个人信息
 			<small>[<?php echo $status_description[$status];?>]</small>

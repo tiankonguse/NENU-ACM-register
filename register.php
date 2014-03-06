@@ -109,7 +109,7 @@ function loadUserInfo(){
 				if(d.data.status == 0){
 					$("form").before("<div class='alert alert-info'><i class='icon icon-info-sign icon-white'></i> 您的信息已经提交，请等待审核，在此期间，您可以修改您的信息。</div>");
 				}else if(d.data.status == 1){
-					$("form").before("<div class='alert alert-error'><i class='icon icon-exclamation-sign icon-white'></i> 您提交的信息已经审核，但是未能通过：<br><b>"+feedback+"</b><br>请修改成真实有效的信息，如有疑问，请联系我们。</div>");
+					$("form").before("<div class='alert alert-error'><i class='icon icon-exclamation-sign icon-white'></i> 您提交的信息已经审核，但是未能通过：<br><b>理由如下："+feedback+"</b><br>请修改成真实有效的信息，如有疑问，请联系我们。</div>");
 				}else if(d.data.status == 2){
 					$("form").before("<div class='alert alert-success'><i class='icon icon-ok-circle icon-white'></i> 您的信息已经通过审核，现在您不能修改你的信息，如果需要，请联系我们。</div>");
 				}else if(d.data.status == 3){

@@ -9,7 +9,7 @@ define ( 'ERROR', 1 );
 define ( 'SUCCESS', 0 );
 define ( 'CONTEST_SALT', '24u9jfdDE#ML(' );
 define ( 'CONTEST_STARTED', true );
-define ( 'CONTEST_STATUS', 3 );
+define ( 'CONTEST_STATUS', 2 );
 $status_description = array (
 		0 => "待审核",
 		1 => "不通过",

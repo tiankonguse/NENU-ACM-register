@@ -1,41 +1,44 @@
 <?php
-$title = "东北师范大学 2013 年 ACM 校赛注册 - 晋级列表";
-include_once('init.php');
-include_once('header.inc.php');
-include('admin_menu.php');
+$title = "东北师范大学 " . date ( "Y", time () ) . "年 ACM 校赛注册 - 注册人员";
+include_once ('init.php');
+include_once ('header.inc.php');
+include ('admin_menu.php');
 ?>
-<table class="table table-striped table-bordered table-condensed tablesorter" style="word-break:break-all;">
-<thead>
-    <tr>
-      <th>No.</th>
-      <th>姓名</th>
-      <th>学院</th>
-      <th>专业</th>
-      <th>年级</th>
-      <th>学号</th>
-      <th>性别</th>
-      <th>座位号</th>
-    </tr>
-  </thead>
-  <tbody>
+<table
+	class="table table-striped table-bordered table-condensed tablesorter"
+	style="word-break: break-all;">
+	<thead>
+		<tr>
+			<th>No.</th>
+			<th>姓名</th>
+			<th>学院</th>
+			<th>专业</th>
+			<th>年级</th>
+			<th>学号</th>
+			<th>性别</th>
+			<th>状态</th>
+		</tr>
+	</thead>
+	<tbody>
 <?php
-$sql = "select * from contestant where status = ".CONTEST_STATUS;
-$result = mysql_query($sql ,$conn);
+$sql = "select * from contestant where status <= " . CONTEST_STATUS;
+$result = mysql_query ( $sql, $conn );
 $cnt = 1;
-while($row=mysql_fetch_array($result)) {
-echo "
-   <tr data-id='".$row['id']."' id='contestant_".$row['id']."'>
-      <td>".($cnt++)."</td>
-      <td>".$row['realname']."</td>
-      <td>".$row['department']."</td>
-      <td>".$row['major']."</td>
-      <td>".$row['grade']."</td>
-      <td>".$row['student_id']."</td>
-      <td>".($row['gender']==0?'女':'男')."</td>
-      <td>".$row['seat']."</td>
+while ( $row = mysql_fetch_array ( $result ) ) {
+	echo "
+   <tr data-id='" . $row ['id'] . "' id='contestant_" . $row ['id'] . "'>
+      <td>" . ($cnt ++) . "</td>
+      <td>" . $row ['realname'] . "</td>
+      <td>" . $row ['department'] . "</td>
+      <td>" . $row ['major'] . "</td>
+      <td>" . $row ['grade'] . "</td>
+      <td>" . $row ['student_id'] . "</td>
+      <td>" . ($row ['gender'] == 0 ? '女' : '男') . "</td>
+		<td>" . $status_description [$row ['status']] . "</td>
    </tr>
 ";
- } ?>
+}
+?>
   </tbody>
 </table>
 <script src='js/jquery.tablesorter.min.js'></script>
@@ -53,6 +56,6 @@ $(".date_time").each(function(){
 });
 </script>
 <?php
-include_once('footer.inc.php');
-include_once('end.php');
+include_once ('footer.inc.php');
+include_once ('end.php');
 ?>
